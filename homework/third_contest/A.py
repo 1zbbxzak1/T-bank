@@ -1,45 +1,59 @@
 import sys
-
-n = int(sys.stdin.readline())
-tree = map(int, sys.stdin.readline().split())
+sys.setrecursionlimit(10**9)
 
 
 class Node:
-    def __init__(self, parent, val):
+    def __init__(self, val):
         self.value = val
-        self.parent = parent
+        self.children = []
 
 
-node_height = 1
-count_node_prev_levels = 0
-deep_node = ['0'] * n
-map_tree = {0: Node(None, 0)}
-max_diameter = 0
-map_diameter_nodes = [0] * n
+def height_diameter(node, depth):
+    if not node:
+        return (depth, 0)
+
+    max_height = depth
+    max_diameter = 0
+    max_child_heights = [0, 0]
+
+    for child in node.children:
+        child_height, child_diameter = height_diameter(child, depth + 1)
+        max_height = max(max_height, child_height)
+        max_diameter = max(max_diameter, child_diameter)
+
+        if child_height > max_child_heights[0]:
+            max_child_heights[1] = max_child_heights[0]
+            max_child_heights[0] = child_height
+        elif child_height > max_child_heights[1]:
+            max_child_heights[1] = child_height
+
+    max_diameter = max(max_diameter, max_child_heights[0] + max_child_heights[1] - 2 * depth)
+
+    return max_height, max_diameter
 
 
-def fill_deep_level(ind_end_elm: int, ind_start_elm: int):
-    for i in range(ind_end_elm - ind_start_elm):
-        deep_node[ind_start_elm + 1 + i] = str(node_height)
+n = int(input())
+parent_values = list(map(int, sys.stdin.readline().split()))
+
+nodes = [Node(i) for i in range(n)]
+root = nodes[0]
+
+for i in range(1, n):
+    parent = parent_values[i - 1]
+    nodes[parent].children.append(nodes[i])
+
+height, diameter = height_diameter(root, 0)
+
+depths = [0] * n
 
 
-for index, value in enumerate(tree):
-    # Определяем высоту дерева
-    if value > count_node_prev_levels:
-        fill_deep_level(index, count_node_prev_levels)  # Заполняем глубину для предыдущего уровня
-        count_node_prev_levels = index
-        node_height += 1
+def find_depths(node, depth):
+    depths[node.value] = depth
+    for child in node.children:
+        find_depths(child, depth + 1)
 
-    map_tree[index + 1] = Node(map_tree[value], index + 1)
 
-# Заполняем глубину для последнего уровня
-fill_deep_level(n - 1, count_node_prev_levels)
+find_depths(root, 0)
 
-# Поиск диаметра дерева
-for val_node in range(n - 1, 0, -1):
-    val_parent = map_tree[val_node].parent.value
-    max_diameter = max(max_diameter, map_diameter_nodes[val_node] + 1 + map_diameter_nodes[val_parent])
-    map_diameter_nodes[val_parent] = max(map_diameter_nodes[val_parent], map_diameter_nodes[val_node] + 1)
-
-print(node_height, max_diameter)
-print(' '.join(deep_node))
+print(height, diameter)
+print(" ".join(map(str, depths)))

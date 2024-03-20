@@ -1,55 +1,40 @@
-class Heap:
-    def __init__(self):
-        self.heap = []
-
-    def sift_down(self, idx):
-        left = 2 * idx
-        right = 2 * idx + 1
-        idx_max = left
-        length = len(self.heap) - 1
-
-        if left > length:
-            return idx
-
-        if (right <= length) and (self.heap[left] < self.heap[right]):
-            idx_max = right
-        if self.heap[idx] < self.heap[idx_max]:
-            self.heap[idx], self.heap[idx_max] = self.heap[idx_max], self.heap[idx]
-            return self.sift_down(idx_max)
-        return idx
-        # while 2 * idx + 1 < len(self.heap):
-        #     left = 2 * idx + 1
-        #     right = 2 * idx + 2
-        #     j = left
-        #     if right < len(self.heap) and self.heap[right] > self.heap[left]:
-        #         j = right
-        #     if self.heap[idx] >= self.heap[j]:
-        #         break
-        #     self.heap[idx], self.heap[j] = self.heap[j], self.heap[idx]
-        #     idx = j
-
-    def sift_up(self, idx):
-        while idx > 0 and self.heap[idx] > self.heap[(idx - 1) // 2]:
-            self.heap[idx], self.heap[(idx - 1) // 2] = self.heap[(idx - 1) // 2], self.heap[idx]
-            idx = (idx - 1) // 2
-
-    def insert(self, element):
-        self.heap.append(element)
-        self.sift_up(len(self.heap) - 1)
-
-    def extract(self):
-        result = self.heap[0]
-        self.heap[0] = self.heap[-1]
-        self.heap.pop()
-        self.sift_down(0)
-        return result
+def sift_up(idx):
+    while idx > 0 and heap[idx] > heap[(idx - 1) // 2]:
+        heap[idx], heap[(idx - 1) // 2] = heap[(idx - 1) // 2], heap[idx]
+        idx = (idx - 1) // 2
 
 
-heap = Heap()
+def sift_down(idx):
+    while 2 * idx + 1 < len(heap):
+        left = 2 * idx + 1
+        right = 2 * idx + 2
+        j = left
+        if right < len(heap) and heap[right] > heap[left]:
+            j = right
+        if heap[idx] >= heap[j]:
+            break
+        heap[idx], heap[j] = heap[j], heap[idx]
+        idx = j
+
+
+def insert(element):
+    heap.append(element)
+    sift_up(len(heap) - 1)
+
+
+def extract():
+    extract_element = heap[0]
+    heap[0] = heap[-1]
+    heap.pop()
+    sift_down(0)
+    return extract_element
+
+
+heap = []
 n = int(input())
 for _ in range(n):
     request, *element = map(int, input().split())
     if request:
-        print(heap.extract())
+        print(extract())
     else:
-        heap.insert(*element)
+        insert(*element)
