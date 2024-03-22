@@ -1,4 +1,4 @@
-def enough_distance_between_cows(min_distance, positions, num_of_cows):
+def is_valid(min_distance, positions, num_of_cows):
     cows_placed = 1  # Первая корова размещена на позиции positions[0]
     last_cow_position = positions[0]
 
@@ -19,7 +19,7 @@ def get_maximum_min_distance(positions, num_of_cows):
     while right - left != 1:
         mid = (left + right) // 2
         # Если можно разместить коров на расстоянии mid, увеличиваем min_distance
-        if enough_distance_between_cows(mid, positions, num_of_cows):
+        if is_valid(mid, positions, num_of_cows):
             left = mid
         # Иначе уменьшаем min_distance
         else:
