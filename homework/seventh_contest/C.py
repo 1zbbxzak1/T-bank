@@ -1,54 +1,33 @@
 import sys
+from collections import deque
 
 n, k = map(int, sys.stdin.readline().split())
-money = [0] * n
-money[0] = 0
-money[n - 1] = 0
-money[1:n - 1] = map(int, sys.stdin.readline().split())
+money = [0] + list(map(int, sys.stdin.readline().split())) + [0]
+dp = [0] * (n + 1)
+predecessors = [0] * (n + 1)
+deque = deque()
 
-min_cost = [sys.maxsize] * n
-predecessors = [0] * n
-min_cost[0] = money[0]
+deque.append(1)
 
-max_val = (-sys.maxsize, -sys.maxsize)
-pre_max_val = (-sys.maxsize, -sys.maxsize)
-for i in range(1, n):
+for i in range(2, n + 1):
+    while deque and deque[0] < i - k:
+        deque.popleft()
 
-    if i == 1:
-        max_val = (money[0], 0)
-        last_min = 0
-    else:
-        arr = [(min_cost[i - 1], i - 1)]
+    dp[i] = dp[deque[0]] + money[i]
+    predecessors[i] = deque[0]
 
-        if i - k <= max_val[1] < i:
-            arr.append(max_val)
+    while deque and dp[i] >= dp[deque[-1]]:
+        deque.pop()
+    deque.append(i)
 
-        if i - k <= pre_max_val[1] < i:
-            arr.append(pre_max_val)
+print(dp[n])
 
-        new_max_val = max(arr)
+i = n
+result = []
+while i != 0:
+    result.append(i)
+    i = predecessors[i]
 
-        arr.pop(arr.index(new_max_val))
-        new_pre_max_val = max(arr)
-
-        last_min = new_max_val[1]
-
-        max_val = new_max_val
-        pre_max_val = new_pre_max_val
-
-    min_cost[i] = min_cost[last_min] + money[i]
-    predecessors[i] = last_min
-
-print(min_cost[-1])
-
-current = n - 1
-path = [current + 1]
-
-while current != 0:
-    current = predecessors[current]
-    path.append(current + 1)
-
-path.reverse()
-
-print(len(path) - 1)
-print(*path)
+print(len(result) - 1)
+for q in range(len(result) - 1, -1, -1):
+    print(result[q], end=" ")
