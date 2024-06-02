@@ -1,33 +1,45 @@
 import sys
 from collections import deque
 
+
+def max_coins(n, k, coins):
+    dp = [-float('inf')] * n
+    dp[0] = 0
+
+    deq = deque([0])
+
+    prev = [-1] * n
+
+    for i in range(1, n):
+        while deq and deq[0] < i - k:
+            deq.popleft()
+
+        if i < n - 1:
+            dp[i] = dp[deq[0]] + coins[i - 1]
+        else:
+            dp[i] = dp[deq[0]]
+
+        prev[i] = deq[0]
+
+        while deq and dp[deq[-1]] <= dp[i]:
+            deq.pop()
+        deq.append(i)
+
+    path = []
+    current = n - 1
+    while current != -1:
+        path.append(current + 1)
+        current = prev[current]
+    path.reverse()
+
+    return dp[n - 1], len(path) - 1, path
+
+
 n, k = map(int, sys.stdin.readline().split())
-money = [0] + list(map(int, sys.stdin.readline().split())) + [0]
-dp = [0] * (n + 1)
-predecessors = [0] * (n + 1)
-deque = deque()
+coins = list(map(int, sys.stdin.readline().split()))
 
-deque.append(1)
+max_coins_value, jumps, path = max_coins(n, k, coins)
 
-for i in range(2, n + 1):
-    while deque and deque[0] < i - k:
-        deque.popleft()
-
-    dp[i] = dp[deque[0]] + money[i]
-    predecessors[i] = deque[0]
-
-    while deque and dp[i] >= dp[deque[-1]]:
-        deque.pop()
-    deque.append(i)
-
-print(dp[n])
-
-i = n
-result = []
-while i != 0:
-    result.append(i)
-    i = predecessors[i]
-
-print(len(result) - 1)
-for q in range(len(result) - 1, -1, -1):
-    print(result[q], end=" ")
+print(max_coins_value)
+print(jumps)
+print(" ".join(map(str, path)))
