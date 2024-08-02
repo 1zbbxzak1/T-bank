@@ -8,7 +8,7 @@
 | Отбор на стажировку, Frontend-разработчик (лето 2024) | Задачи: 404/600 (в папках intership/contest JS и intership/contest Python) | Отказалась от собеседования |
 | Отбор на стажировку, Python-разработчик (лето 2024) | Задачи: 404/600 (в папке intership/contest Python) | Не прошла |
 | Отбор на стажировку, .NET-разработчик (лето 2024) | Задачи: 404/600 (в папке intership/contest Python), знание .NET: 13/13 | Не прошла |
-| Академия Бэкенда, Java (2024) | На проверке (в папке backend_academy_summer_2024/algorithms && math && practice (Java)) | На проверке |
-| Академия Бэкенда, Python (2024) | На проверке (в папке backend_academy_summer_2024/algorithms && math && practice (Python Go Scala)) | На проверке |
-| Академия Бэкенда, Go (2024) | На проверке (в папке backend_academy_summer_2024/algorithms && math && practice (Python Go Scala)) | На проверке |
+| Академия Бэкенда, Java (2024) | Задачи: 438/500, знание Java: 34/34, матем: скрыто (в папке backend_academy_summer_2024/algorithms && math && practice (Java)) | Прошла (решение домашних задач в папке backend_academy_summer_2024/homework |
+| Академия Бэкенда, Python (2024) | Задачи: 438/500, знание ЯП: 22/28, матем: скрыто (в папке backend_academy_summer_2024/algorithms && math && practice (Python Go Scala)) | Не прошла |
+| Академия Бэкенда, Go (2024) | Задачи: 438/500, знание ЯП: 22/28, матем: скрыто (в папке backend_academy_summer_2024/algorithms && math && practice (Python Go Scala)) | Не прошла |
 | Отбор на стажировку, Frontend-разработчик (осень 2024) | Экзамены будут с 10 по 17 сентября | Экзамены будут с 10 по 17 сентября |
