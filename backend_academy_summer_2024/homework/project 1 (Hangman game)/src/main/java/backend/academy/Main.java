@@ -11,14 +11,13 @@ import lombok.experimental.UtilityClass;
 public class Main {
     public static void main(String[] args) {
         GallowsView view = new GallowsView(System.out);
-        GallowsController controller = new GallowsController(null, view, System.out);
+        GallowsController controller = new GallowsController(view, System.out);
 
         CategoriesWords selectedCategory = controller.selectCategory();
         DifficultyLevels selectedLevel = controller.selectDifficultyLevel();
 
         GallowsModel model = new GallowsModel(selectedCategory, selectedLevel, System.out);
-        controller = new GallowsController(model, view, System.out);
 
-        controller.playGame();
+        controller.startGame(model);
     }
 }

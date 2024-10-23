@@ -7,13 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum CategoriesWords implements TranslatableEnum {
-    Animal("Животные"),
-    Nature("Природа"),
-    Food("Еда"),
-    Cities("Города"),
-    Countries("Страны"),
-    Hobby("Хобби"),
-    Popular("1000 популярных");
+    ANIMAL("Животные"),
+    NATURE("Природа"),
+    FOOD("Еда"),
+    CITIES("Города"),
+    COUNTRIES("Страны"),
+    HOBBY("Хобби"),
+    POPULAR("1000 популярных");
 
     private static final Map<CategoriesWords, String[]> WORDS_MAP = new HashMap<>();
 

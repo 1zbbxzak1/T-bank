@@ -32,13 +32,13 @@ public class DictionaryReader {
 
     public String getFilenameByCategory(CategoriesWords category) {
         return switch (category) {
-            case Animal -> ANIMAL_FILENAME;
-            case Nature -> NATURE_FILENAME;
-            case Food -> FOOD_FILENAME;
-            case Cities -> CITIES_FILENAME;
-            case Countries -> COUNTRIES_FILENAME;
-            case Hobby -> HOBBY_FILENAME;
-            case Popular -> POPULAR_FILENAME;
+            case ANIMAL -> ANIMAL_FILENAME;
+            case NATURE -> NATURE_FILENAME;
+            case FOOD -> FOOD_FILENAME;
+            case CITIES -> CITIES_FILENAME;
+            case COUNTRIES -> COUNTRIES_FILENAME;
+            case HOBBY -> HOBBY_FILENAME;
+            case POPULAR -> POPULAR_FILENAME;
         };
     }
 

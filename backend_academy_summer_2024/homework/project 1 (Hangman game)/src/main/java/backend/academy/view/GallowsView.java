@@ -1,6 +1,6 @@
 package backend.academy.view;
 
-import backend.academy.properties.ConfigLoader;
+import backend.academy.constants.ConfigConstants;
 import java.io.PrintStream;
 
 public class GallowsView {
@@ -28,8 +28,8 @@ public class GallowsView {
 
     // Массив с визуализацией всех стадий виселицы
     public String[] createHangmanStages(int maxAttempts) {
-        int mediumMaxAttempts = Integer.parseInt(ConfigLoader.getProperty("MAX_ATTEMPTS_MEDIUM"));
-        int hardMaxAttempts = Integer.parseInt(ConfigLoader.getProperty("MAX_ATTEMPTS_HARD"));
+        int mediumMaxAttempts = ConfigConstants.MAX_ATTEMPTS_MEDIUM;
+        int hardMaxAttempts = ConfigConstants.MAX_ATTEMPTS_HARD;
 
         if (maxAttempts == hardMaxAttempts) {
             return new String[] {

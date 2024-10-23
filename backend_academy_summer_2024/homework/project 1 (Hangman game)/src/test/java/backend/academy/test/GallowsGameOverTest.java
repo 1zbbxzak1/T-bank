@@ -26,7 +26,7 @@ public class GallowsGameOverTest {
         output = Mockito.mock(PrintStream.class);
 
         // Выберите категорию и уровень сложности для теста
-        model = new GallowsModel(CategoriesWords.Food, DifficultyLevels.easy, output);
+        model = new GallowsModel(CategoriesWords.FOOD, DifficultyLevels.EASY, output);
         view = new GallowsView(output);
     }
 

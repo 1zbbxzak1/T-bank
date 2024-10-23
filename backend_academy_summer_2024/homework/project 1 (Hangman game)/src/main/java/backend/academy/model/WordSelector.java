@@ -1,8 +1,8 @@
 package backend.academy.model;
 
+import backend.academy.constants.ConfigConstants;
 import backend.academy.enums.CategoriesWords;
 import backend.academy.enums.DifficultyLevels;
-import backend.academy.properties.ConfigLoader;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,19 +28,16 @@ public class WordSelector {
         int minLength;
         int maxLength;
         switch (difficulty) {
-            case easy -> {
-                minLength = Integer.parseInt(
-                    ConfigLoader.getProperty("MIN_WORD_LENGTH_EASY")); // Легкий уровень: слова короткие
-                maxLength = Integer.parseInt(ConfigLoader.getProperty("MAX_WORD_LENGTH_EASY"));
+            case EASY -> {
+                minLength = ConfigConstants.MIN_WORD_LENGTH_EASY; // Легкий уровень: слова короткие
+                maxLength = ConfigConstants.MAX_WORD_LENGTH_EASY;
             }
-            case medium -> {
-                minLength = Integer.parseInt(
-                    ConfigLoader.getProperty("MIN_WORD_LENGTH_MEDIUM")); // Средний уровень: слова средней длины
-                maxLength = Integer.parseInt(ConfigLoader.getProperty("MAX_WORD_LENGTH_MEDIUM"));
+            case MEDIUM -> {
+                minLength = ConfigConstants.MIN_WORD_LENGTH_MEDIUM; // Средний уровень: слова средней длины
+                maxLength = ConfigConstants.MAX_WORD_LENGTH_MEDIUM;
             }
-            case hard -> {
-                minLength = Integer.parseInt(
-                    ConfigLoader.getProperty("MIN_WORD_LENGTH_HARD")); // Сложный уровень: слова длинные
+            case HARD -> {
+                minLength = ConfigConstants.MIN_WORD_LENGTH_HARD; // Сложный уровень: слова длинные
                 maxLength = Integer.MAX_VALUE;
             }
             default -> throw new IllegalArgumentException("Неизвестный уровень сложности: " + difficulty);

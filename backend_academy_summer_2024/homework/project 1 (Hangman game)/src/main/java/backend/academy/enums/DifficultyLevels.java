@@ -3,9 +3,9 @@ package backend.academy.enums;
 import backend.academy.interfaces.TranslatableEnum;
 
 public enum DifficultyLevels implements TranslatableEnum {
-    easy("Легкий"),
-    medium("Средний"),
-    hard("Сложный");
+    EASY("Легкий"),
+    MEDIUM("Средний"),
+    HARD("Сложный");
 
     private final String translationDifficultyLevels;
 

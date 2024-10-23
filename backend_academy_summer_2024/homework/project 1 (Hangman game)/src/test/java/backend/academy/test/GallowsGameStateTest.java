@@ -29,7 +29,7 @@ class GallowsGameStateTest {
         gallowsView = new GallowsView(output);
 
         // Создание модели с известным словом
-        gallowsModel = new GallowsModel(CategoriesWords.Animal, DifficultyLevels.easy, output);
+        gallowsModel = new GallowsModel(CategoriesWords.ANIMAL, DifficultyLevels.EASY, output);
         gallowsModel.updateWordToGuess("кот");
     }
 

@@ -16,7 +16,7 @@ class GallowsInvalidWordLengthTest {
         PrintStream output = Mockito.mock(PrintStream.class);
 
         // Используем обычный конструктор GallowsModel
-        GallowsModel gallowsModel = new GallowsModel(CategoriesWords.Animal, DifficultyLevels.easy, output);
+        GallowsModel gallowsModel = new GallowsModel(CategoriesWords.ANIMAL, DifficultyLevels.EASY, output);
 
         // Проверяем, что выбрасывается IllegalArgumentException при установке пустого слова
         assertThrows(IllegalArgumentException.class, () -> {

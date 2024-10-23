@@ -1,8 +1,8 @@
 package backend.academy.model;
 
+import backend.academy.constants.ConfigConstants;
 import backend.academy.enums.CategoriesWords;
 import backend.academy.enums.DifficultyLevels;
-import backend.academy.properties.ConfigLoader;
 import backend.academy.view.HangmanStageManager;
 import java.io.PrintStream;
 
@@ -106,9 +106,9 @@ public class GallowsModel {
 
     private int getMaxAttempts(DifficultyLevels difficulty) {
         return switch (difficulty) {
-            case easy -> Integer.parseInt(ConfigLoader.getProperty("MAX_ATTEMPTS_EASY"));
-            case medium -> Integer.parseInt(ConfigLoader.getProperty("MAX_ATTEMPTS_MEDIUM"));
-            case hard -> Integer.parseInt(ConfigLoader.getProperty("MAX_ATTEMPTS_HARD"));
+            case EASY -> ConfigConstants.MAX_ATTEMPTS_EASY;
+            case MEDIUM -> ConfigConstants.MAX_ATTEMPTS_MEDIUM;
+            case HARD -> ConfigConstants.MAX_ATTEMPTS_HARD;
         };
     }
 

@@ -22,7 +22,7 @@ class DictionaryReaderTest {
     @Test
     void testLoadWordsByCategory() throws IOException {
         // Предполагаем, что файл resources/Animal.txt содержит слова "кот", "собака"
-        dictionaryReader.loadWordsByCategory(CategoriesWords.Animal);
+        dictionaryReader.loadWordsByCategory(CategoriesWords.ANIMAL);
         List<String> words = dictionaryReader.getWords();
 
         assertFalse(words.isEmpty(), "Список слов не должен быть пустым");
@@ -32,13 +32,13 @@ class DictionaryReaderTest {
 
     @Test
     void testGetFilenameByCategory() {
-        assertEquals("resources/Animal.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.Animal));
-        assertEquals("resources/Nature.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.Nature));
-        assertEquals("resources/Food.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.Food));
-        assertEquals("resources/Cities.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.Cities));
-        assertEquals("resources/Countries.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.Countries));
-        assertEquals("resources/Hobby.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.Hobby));
-        assertEquals("resources/Popular.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.Popular));
+        assertEquals("resources/Animal.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.ANIMAL));
+        assertEquals("resources/Nature.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.NATURE));
+        assertEquals("resources/Food.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.FOOD));
+        assertEquals("resources/Cities.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.CITIES));
+        assertEquals("resources/Countries.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.COUNTRIES));
+        assertEquals("resources/Hobby.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.HOBBY));
+        assertEquals("resources/Popular.txt", dictionaryReader.getFilenameByCategory(CategoriesWords.POPULAR));
     }
 }
 

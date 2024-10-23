@@ -26,7 +26,7 @@ public class GallowsCaseInsensitiveTest {
         wordSelector = Mockito.mock(WordSelector.class);
 
         // Создание модели с известным словом
-        gallowsModel = new GallowsModel(CategoriesWords.Animal, DifficultyLevels.easy, output);
+        gallowsModel = new GallowsModel(CategoriesWords.ANIMAL, DifficultyLevels.EASY, output);
         gallowsModel.updateWordToGuess("кот");
     }
 
