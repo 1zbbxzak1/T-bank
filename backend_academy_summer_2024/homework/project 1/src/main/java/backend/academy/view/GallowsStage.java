@@ -1,5 +1,8 @@
 package backend.academy.view;
 
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 public final class GallowsStage {
     public static final String STAGE_1 = """
 
@@ -83,9 +86,4 @@ public final class GallowsStage {
         -|---------""";
     public static final String STAGE_EMPTY = """
         """;
-
-    private GallowsStage() {
-        throw new UnsupportedOperationException("Utility class should not be instantiated");
-    }
-
 }
